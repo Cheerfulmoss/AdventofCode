@@ -11,7 +11,7 @@ for index, line in enumerate(lines):
     score = 0
     line = " ".join(line.strip().split())
     winning_nums, card_nums = map(str.strip, line.split("|"))
-    winning_nums, card_nums = winning_nums.split(" "), card_nums.split(" ")
+    winning_nums, card_nums = winning_nums.split(" ")[2:], card_nums.split(" ")
     for winning_num in winning_nums:
         if winning_num in card_nums:
             score += 1
