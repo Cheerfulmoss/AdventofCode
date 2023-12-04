@@ -27,9 +27,7 @@ print(process)
 
 for game in process:
     card_copies = games.get(game)
-
-    for card_copy in card_copies:
-        process.append(card_copy)
+    process.extend(card_copy)
 
 end_calc_paths = perf_counter_ns() - start_calc_paths
 
