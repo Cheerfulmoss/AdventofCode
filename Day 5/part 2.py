@@ -69,7 +69,8 @@ def main():
     for proc_count, chunk in enumerate(chunked_seed_ranges):
         print(f"{proc_count + 1} || {chunk}")
 
-    print(f"Total Processes: {processes}")
+    print(f"Total Processes: {processes} "
+          f"({round(processes / multiprocessing.cpu_count() * 100, 2)}%)")
 
     with Pool(processes) as p:
         results = p.starmap(find_smallest_from_range,
