@@ -13,7 +13,7 @@ def reduce(sequences: list[list[int]]) -> list[list[int]]:
 def extension(reductions: list[list[int]]) -> int:
     rev_reds = reductions[::-1]
     for index, red in enumerate(rev_reds):
-        if index == 0:
+        if not index:
             continue
         red.insert(0, red[0] - rev_reds[index - 1][0])
     return reductions[0][0]
