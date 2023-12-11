@@ -25,8 +25,8 @@ def find_galaxies(gal_map: list[str], exp_coords: list[list[int]]):
                          len(list(filter(lambda j: j < x, exp_coords[0])))
                          )
             coord = (
-                x + (1000000 * mults[1]) - mults[1],
-                y + (1000000 * mults[0]) - mults[0],
+                x + (999_999 * mults[1]),
+                y + (999_999 * mults[0]),
 
             )
             if char == "#" and coord not in gal_coords:
@@ -60,4 +60,4 @@ if __name__ == "__main__":
     gal_coords = find_galaxies(lines, expansions)
     print(len(gal_coords))
     path_lens = dists(gal_coords)
-    print(sum(path_lens))
+    print(sum(path_lens))  # 597,714,117,556
