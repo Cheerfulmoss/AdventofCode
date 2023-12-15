@@ -1,4 +1,3 @@
-
 def read_file(file: str):
     with open(file, "r") as in_f:
         lines = in_f.readlines()
@@ -10,6 +9,7 @@ def read_file(file: str):
 
     return inits
 
+
 def cHash(pre: int, string: str) -> int:
     curr = pre
     for char in string:
@@ -19,20 +19,25 @@ def cHash(pre: int, string: str) -> int:
 
     return curr
 
+
 def boxify(inits: list[str]):
-    boxes = {i: {} for i in range(256)}
+    boxes = {}
 
     for seq in inits:
         if "=" in seq:
             word, lens = seq.split("=")
-            boxes[cHash(0, word)][word] = lens
-
-        if "-" in seq:
+            boxes.setdefault(cHash(0, word), {})[word] = lens
+        elif "-" in seq:
             word = seq.strip("-")
-            if boxes[cHash(0, word)].get(word):
-                boxes[cHash(0, word)].pop(word)
+            if ((cont := boxes.get(whash := cHash(0, word))) and
+                    cont.get(word)):
+                if len(boxes[whash]) == 1:
+                    boxes.pop(whash)
+                    continue
+                boxes[whash].pop(word)
 
     return boxes
+
 
 def verify_da_boxify(boxes: dict[int, dict[str, int]]):
     ver_val = 0
@@ -48,5 +53,5 @@ if __name__ == "__main__":
     # inits = read_file("test.txt")
 
     boxes = boxify(inits)
-    print(verify_da_boxify(boxes))
+    print(verify_da_boxify(boxes))  # 236,358
     print(boxes)
