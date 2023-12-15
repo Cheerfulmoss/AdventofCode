@@ -67,4 +67,4 @@ if __name__ == "__main__":
     gal_coords = find_galaxies(gal_map)
     print(len(gal_coords))
     path_lens = dists(gal_coords)
-    print(sum(path_lens))
+    print(sum(path_lens))  # 9,312,968
